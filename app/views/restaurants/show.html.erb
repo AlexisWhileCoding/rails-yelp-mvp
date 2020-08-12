@@ -1,0 +1,22 @@
+<h1><%= @restaurant.name %></h1>
+
+<h4>Address: <%= @restaurant.address %></h4>
+
+<h4><% if @restaurant.phone_number.nil? %>
+      Phone number: None listed
+  <% else %>
+      Phone number: <%= @restaurant.phone_number %>
+  <% end %>
+
+</h4>
+
+<h4><%= @restaurant.category %></h4>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">Review:<%= review.content %> Rating:<%= review.rating %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
+<%= link_to "Back to restaurants", restaurants_path%>
